@@ -44,6 +44,7 @@ const Home = () => {
             desc={data.desc}
             key={data.id}
             rating={data.rating}
+            path={data.id}
           />
         ))}
       </div>

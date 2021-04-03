@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "./components/core/Footer";
 import Nav from "./components/core/Nav";
 import About from "./pages/About";
+import { GameDetail } from "./pages/GameDetail";
 import Home from "./pages/Home";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <div className="na-body-content">
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/GameDetail/:id" component={GameDetail} />
             <Route path="/about" exact component={About} />
           </Switch>
         </div>
