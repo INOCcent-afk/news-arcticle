@@ -1,31 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CardAnimal } from "../components/cards/CardAnimal";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import Animal from "../assets/images/pexels-guillaume-meurice-1894350.jpg";
 
-// Import Swiper styles
 import "swiper/swiper.scss";
 
-// import Swiper core and required modules
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
-// Import Swiper styles
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.scss";
 import "swiper/components/pagination/pagination.scss";
-import "swiper/components/scrollbar/scrollbar.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../store";
+import { newsState } from "../store/news/newsTypes";
+import { loadNews } from "../store/news/newsAction";
+import { loadSponsors } from "../store/sponsors/sponsorsAction";
+import { SponsorsState } from "../store/sponsors/sponsorsTypes";
+import { Cardsponsor } from "../components/cards/Cardsponsor";
 
-// install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  const news = useSelector<AppState, newsState["news"]>(
+    (state) => state.newsReducer.news
+  );
+  const sponsors = useSelector<AppState, SponsorsState["sponsors"]>(
+    (state) => state.sponsorsReducer.sponsors
+  );
+
+  useEffect(() => {
+    dispatch(loadNews());
+    dispatch(loadSponsors());
+  }, [dispatch]);
+
   return (
     <>
       <div className="na-news-container">
-        <CardAnimal />
-        <CardAnimal />
-        <CardAnimal />
+        {news.map((data) => (
+          <CardAnimal
+            img={data.image}
+            title={data.title}
+            desc={data.desc}
+            key={data.id}
+            rating={data.rating}
+            path={data.id}
+          />
+        ))}
       </div>
 
       <Swiper
@@ -35,102 +56,39 @@ const Home = () => {
         navigation
         pagination={{ clickable: true }}
       >
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
+        {sponsors.map((sponsor) => (
+          <SwiperSlide key={sponsor.id}>
+            <Cardsponsor img={sponsor.image} key={sponsor.id} />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <Swiper
+        className="na-news-card-swiper"
         spaceBetween={10}
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
       >
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
+        {sponsors.map((sponsor) => (
+          <SwiperSlide key={sponsor.id}>
+            <Cardsponsor img={sponsor.image} key={sponsor.id} />
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <Swiper
+        className="na-news-card-swiper"
         spaceBetween={10}
         slidesPerView={3}
         navigation
         pagination={{ clickable: true }}
       >
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-      </Swiper>
-
-      <Swiper
-        spaceBetween={10}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-      >
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
-        <SwiperSlide className="na-card-animal na-card-animal-sm ">
-          <img src={Animal} alt="na-card" />
-        </SwiperSlide>
+        {sponsors.map((sponsor) => (
+          <SwiperSlide key={sponsor.id}>
+            <Cardsponsor img={sponsor.image} key={sponsor.id} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

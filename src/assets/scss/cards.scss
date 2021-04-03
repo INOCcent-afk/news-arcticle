@@ -19,6 +19,7 @@
     width: 400px;
     object-fit: cover;
     height: 500px;
+    cursor: pointer;
   }
 }
 
@@ -27,5 +28,18 @@
     height: 200px;
     filter: grayscale(90%);
     width: 100%;
+  }
+}
+
+.na-news-card-detail {
+  flex-direction: column-reverse;
+  .na-news-info {
+    margin-left: 0;
+  }
+  .na-card-animal {
+    img {
+      width: 100%;
+      height: 500px;
+    }
   }
 }
