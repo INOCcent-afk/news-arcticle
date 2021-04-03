@@ -1,0 +1,22 @@
+@import "vars";
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: $primaryColor;
+  color: $secondaryFont;
+
+  .nav_links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    li {
+      margin: 0 10px;
+      a {
+        color: $secondaryFont;
+        text-decoration: none;
+      }
+    }
+  }
+}

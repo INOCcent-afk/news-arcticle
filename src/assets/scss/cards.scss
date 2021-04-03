@@ -1,0 +1,31 @@
+.na-news-card-swiper {
+  margin-bottom: 20px;
+}
+
+.na-news-card {
+  display: flex;
+  margin-bottom: 30px;
+
+  .na-news-info {
+    margin-left: 50px;
+    p {
+      font-size: 20px;
+    }
+  }
+}
+
+.na-card-animal {
+  img {
+    width: 400px;
+    object-fit: cover;
+    height: 500px;
+  }
+}
+
+.na-card-animal-sm {
+  img {
+    height: 200px;
+    filter: grayscale(90%);
+    width: 100%;
+  }
+}
