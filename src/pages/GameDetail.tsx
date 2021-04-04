@@ -28,6 +28,7 @@ export const GameDetail: React.FC<GameDetailProps> = ({ match }) => {
             rating={filteredData.rating}
             path={filteredData.id}
             detailClass={"na-news-card-detail"}
+            moreDesc1={filteredData.moreDesc[0]}
           />
         ))}
     </>

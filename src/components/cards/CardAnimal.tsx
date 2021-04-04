@@ -9,6 +9,8 @@ interface CardAnimalProps {
   rating: string;
   path: number;
   detailClass?: string;
+  moreDesc1?: string;
+  moreDesc2?: string;
 }
 
 export const CardAnimal: React.FC<CardAnimalProps> = ({
@@ -18,6 +20,8 @@ export const CardAnimal: React.FC<CardAnimalProps> = ({
   desc,
   path,
   detailClass,
+  moreDesc1,
+  moreDesc2,
 }) => {
   return (
     <div className={`na-news-card ${detailClass}`}>
@@ -31,6 +35,8 @@ export const CardAnimal: React.FC<CardAnimalProps> = ({
         <p>{rating}</p>
         <div className="na-news-rating"></div>
         <p>{desc}</p>
+        <p>{moreDesc1}</p>
+        <p>{moreDesc2}</p>
       </div>
     </div>
   );
